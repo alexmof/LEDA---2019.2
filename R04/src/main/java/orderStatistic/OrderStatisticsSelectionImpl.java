@@ -24,26 +24,47 @@ public class OrderStatisticsSelectionImpl<T extends Comparable<T>> implements Or
 		if (k <= 0 || k > array.length) {
 			return null;
 		} else {
-			int indexLastLower = 0;
-			return OrderStatistics(array, k, indexLastLower, k);
+			int max = getMaximo(array);
+			int min = getMinimo(array);
+			int aux = max;
+			return OrderStatistics(array, k, min, aux, max, k - 1);
 		}
-	}
+	}	
 
-	private T OrderStatistics(T[] array, int k, int indexLastLower, int cont) {
+	private T OrderStatistics(T[] array, int k, int indexMin, int aux, int indexMax, int cont) {
 		if (cont > 0) {	
-			int indexCurrentLower = 0;
-			for (int i = 0; i < array.length; i++) {
-				if (i != indexLastLower && array[i].compareTo(array[indexLastLower]) > 0 && array[i].compareTo(array[indexCurrentLower]) < 0) {
-					indexCurrentLower = i;
+			for(int i = 0; i < array.length; i++) {
+				if (array[i].compareTo(array[indexMin]) > 0 && array[i].compareTo(array[aux]) < 0) {
+					aux = i;
 				}
 			}
-			indexLastLower = indexCurrentLower;
+			indexMin = aux;
+			aux = indexMax;
 			cont--;
-			return OrderStatistics(array, k, indexLastLower, cont);
+			return OrderStatistics(array, k, indexMin, aux, indexMax, cont);
 		} else {
-			return array[indexLastLower];
+			return array[indexMin];
 		}
 	}
+	
+	private int getMinimo(T[] array) {
+		int min = 0;
+		for (int i = 1; i < array.length; i++) {
+			if (array[i].compareTo(array[min]) < 0) {
+				min = i;
+			}
+		}
+		return min;
+	}
 
+	private int getMaximo(T[] array) {
+		int max = 0;
+		for (int i = 1; i < array.length; i++) {
+			if (array[i].compareTo(array[max]) > 0) {
+				max = i;
+			}
+		}
+		return max;
+	}
 }
 

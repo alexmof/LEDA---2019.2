@@ -1,5 +1,7 @@
 package problems;
 
+import java.util.Arrays;
+
 /**
  * Calcula o floor e ceil de um numero em um array usando a estrategia de busca
  * binaria.
@@ -15,8 +17,13 @@ public class FloorCeilBinarySearch implements FloorCeil {
 
 	@Override
 	public Integer floor(Integer[] array, Integer x) {
-		// TODO implement your code here
-		throw new UnsupportedOperationException("Not implemented yet!");
+		if (x < array[0]) {
+			return null;
+		} else {
+			auxFloor()
+			Arrays.copyOfRange(array, 0, array.length/2);
+			Arrays.copyOfRange(array, (array.length / 2) + 1, array.length);
+		}
 	}
 
 	@Override
