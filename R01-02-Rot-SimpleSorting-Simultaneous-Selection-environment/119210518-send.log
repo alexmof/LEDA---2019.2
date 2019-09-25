@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2019-08-26T16:31:25.184-0300</date>
+  <logger>ALEX MICAELA DE OLIVEIRA FIDELIS</logger>
+  <level>FINE</level>
+  <message>File 119210518-ALEX MICAELA DE OLIVEIRA FIDELIS.zip was received. It was sent by ALEX MICAELA DE OLIVEIRA FIDELIS from IP 150.165.42.131 at 26-08-2019 16*31*25</message>
+</record>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2019-08-27T14:16:44.645-0300</date>
+  <logger>ALEX MICAELA DE OLIVEIRA FIDELIS</logger>
+  <level>FINE</level>
+  <message>File 119210518-ALEX MICAELA DE OLIVEIRA FIDELIS.zip was received. It was sent by ALEX MICAELA DE OLIVEIRA FIDELIS from IP 10.0.0.104 at 27-08-2019 14*16*44</message>
+</record>
