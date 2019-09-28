@@ -64,20 +64,21 @@ public class SingleLinkedListImpl<T> implements LinkedList<T> {
 	}
 
 	@Override
-	public void remove(T element) {
-		SingleLinkedListNode<T> aux = this.head;
-		
-		if (head.getData().equals(element)) {
-			this.getHead().setData(null);
+	public void remove(T element) {		
+		if (this.head.getData().equals(element)) {
+			this.head = this.head.getNext();
 		} else {
-			while (!aux.getNext().isNIL()) {
-				if (aux.getNext().getData().equals(element)) {
-					aux.setNext(aux.getNext().getNext());
-				}
+			SingleLinkedListNode<T> aux = this.head;
+			SingleLinkedListNode<T> previous = new SingleLinkedListNode<>();
 			
-				aux = aux.getNext();
+			while (!aux.isNIL() && !aux.getData().equals(element)) {
+				previous = aux;
+				aux =  aux.getNext();
 			}
-		}		
+			if (!aux.isNIL()) {
+				previous.next = aux.getNext();
+			}
+		}
 	}
 
 	@Override

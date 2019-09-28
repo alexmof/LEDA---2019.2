@@ -2,6 +2,8 @@ package adt.queue;
 
 import adt.linkedList.DoubleLinkedList;
 import adt.linkedList.DoubleLinkedListImpl;
+import adt.linkedList.DoubleLinkedListNode;
+import adt.linkedList.SingleLinkedListImpl;
 
 public class QueueDoubleLinkedListImpl<T> implements Queue<T> {
 
@@ -15,20 +17,17 @@ public class QueueDoubleLinkedListImpl<T> implements Queue<T> {
 
 	@Override
 	public void enqueue(T element) throws QueueOverflowException {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Not implemented yet!");
+		list.insert(element);
 	}
 
 	@Override
 	public T dequeue() throws QueueUnderflowException {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Not implemented yet!");
+		DoubleLinkedListNode<T> element = list.removeFirst();
 	}
 
 	@Override
 	public T head() {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Not implemented yet!");
+		DoubleLinkedListNode<T> node = ((SingleLinkedListImpl<T>) list).getHead();
 	}
 
 	@Override
