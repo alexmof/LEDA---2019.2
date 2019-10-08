@@ -17,14 +17,6 @@ public class HashtableOpenAddressLinearProbingImpl<T extends Storable> extends
 	public void insert(T element) {
 		if (element != null) {
 			
-			/*int hash = ((HashFunctionLinearProbing<T>) this.getHashFunction()).hash(element, 0);
-
-			int cont = 1;
-			
-			while ((this.table[hash] != null || this.table.equals(deletedElement)) && cont < this.table.length) {
-				hash = ((HashFunctionLinearProbing<T>) this.getHashFunction()).hash(element, cont);
-			}*/
-			
 			int cont = 0;
 			int hash = -1;
 			
