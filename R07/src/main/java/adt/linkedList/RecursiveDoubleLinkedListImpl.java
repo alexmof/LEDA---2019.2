@@ -18,7 +18,6 @@ public class RecursiveDoubleLinkedListImpl<T> extends
 
 	@Override
 	public void insertFirst(T element) {
-<<<<<<< HEAD
 		T aux = this.getData();
 		this.setData(element);
 		RecursiveDoubleLinkedListImpl<T> second = new RecursiveDoubleLinkedListImpl<T>();
