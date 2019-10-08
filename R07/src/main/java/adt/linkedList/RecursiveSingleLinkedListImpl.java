@@ -21,59 +21,14 @@ public class RecursiveSingleLinkedListImpl<T> implements LinkedList<T> {
 		return retorno;
 	}
 
-	/*@Override
-	public int size() {
-		int retorno = 0;
-		
-		if (!isEmpty()) {
-			int size = 1;
-			RecursiveSingleLinkedListImpl<T> node = this;
-			retorno = size(size, node);
-		} 		
-		
-		return retorno;
-	}
-
-	private int size(int size, RecursiveSingleLinkedListImpl<T> node) {
-		if (node.getData() == null) {
-			return size;
-		} else {
-			size++;
-			node = node.getNext();
-			return size(size, node);
-		}
-	}*/
-	
 	@Override
 	public int size() {		
 		if (isEmpty()) {
 			return 0;
 		} else {
-			return 1 + getNext().size();
+			return 1 + this.next.size();
 		}
 	}
-
-
-	/*@Override
-	public T search(T element) {
-		T retorno = null;
-		
-		if (!isEmpty()) {
-			RecursiveSingleLinkedListImpl<T> node = this;
-			retorno = search(element, node);
-		}
-		
-		return retorno;
-	}
-
-	private T searchRe(T element) {
-		if (node.getData().equals(element)) {
-			return element;
-		} else {
-			node = node.getNext();
-			return node.search(element);
-		}
-	}*/
 	
 	@Override
 	public T search(T element){
@@ -85,34 +40,16 @@ public class RecursiveSingleLinkedListImpl<T> implements LinkedList<T> {
 			return getNext().search(element);
 		}
 	}
-
-
-	/*@Override
-	public void insert(T element) {
-		if (isEmpty()) {
-			this.setData(element);
-		} else {
-			RecursiveSingleLinkedListImpl<T> node = this;
-			insert(element, node);
-		}
-	}
-
-	private void insert(T element, RecursiveSingleLinkedListImpl<T> node) {
-		if (node.getData() == null) {
-			node.setData(element);
-		} else {
-			node = node.getNext();
-			insert(element, node);
-		}
-	}*/
 	
 	@Override
 	public void insert(T element) {
-		if (isEmpty()) {
-			this.setData(element);
-			this.setNext(new RecursiveSingleLinkedListImpl<T>());
-		} else {
-			this.getNext().insert(element);
+		if (element != null) {
+			if (isEmpty()) {
+				this.setData(element);
+				this.setNext(new RecursiveSingleLinkedListImpl<T>());
+			} else {
+				this.getNext().insert(element);
+			}	
 		}
 	}
 
