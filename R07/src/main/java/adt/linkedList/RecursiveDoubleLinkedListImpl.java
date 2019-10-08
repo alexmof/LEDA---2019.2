@@ -15,8 +15,16 @@ public class RecursiveDoubleLinkedListImpl<T> extends
 		this.setData(element);
 		RecursiveDoubleLinkedListImpl<T> second = new RecursiveDoubleLinkedListImpl<T>();
 		second.setData(aux);
+		second.setPrevious(this);
 		
-		RecursiveDoubleLinkedListImpl<T> third = this.ge
+		
+		RecursiveDoubleLinkedListImpl<T> third = (RecursiveDoubleLinkedListImpl<T>) this.getNext();
+		second.setNext(third);
+		
+		this.setNext(second);
+		third.setPrevious(second);
+		
+		
 	}
 
 	@Override
