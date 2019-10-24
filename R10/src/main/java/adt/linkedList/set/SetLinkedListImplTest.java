@@ -22,6 +22,7 @@ public class SetLinkedListImplTest {
 		lista1.insert(7);
 		lista1.insert(5);
 		lista1.insert(7);
+		
 		lista1.insert(2);
 		//lista1.insert(5);
 		lista1.insert(7);
