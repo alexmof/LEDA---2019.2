@@ -66,36 +66,71 @@ public class HashtableClosedAddressImpl<T> extends
 
 	@Override
 	public void insert(T element) {
-		this.elements++;
-		int hash = ((HashFunctionClosedAddress<T>) this.getHashFunction()).hash(element);
-		
-		LinkedList<T> aux = (LinkedList<T>) this.table[hash];
-		
-		if (aux == null || aux.isEmpty()) {
-			LinkedList<T> newLL = new LinkedList<T>();
-			this.table[hash] = newLL;
-			newLL.add(element);
+		if (element != null) {
+			this.elements++;
+			int hash = ((HashFunctionClosedAddress<T>) this.getHashFunction()).hash(element);
+			hash = Math.abs(hash);			
 			
-		} else {
-			COLLISIONS++;
-			aux.add(element);
-		}
+			@SuppressWarnings("unchecked")
+			LinkedList<T> aux = (LinkedList<T>) this.table[hash];
+			
+			if (aux == null || aux.isEmpty()) {
+				LinkedList<T> newLL = new LinkedList<T>();
+				this.table[hash] = newLL;
+				newLL.add(element);
+				
+			} else {
+				COLLISIONS++;
+				aux.add(element);
+			}	
+		}	
 	}
 
 	@Override
 	public void remove(T element) {
-		int
+		if (element != null) {
+			int hash = ((HashFunctionClosedAddress<T>) this.getHashFunction()).hash(element);
+			hash = Math.abs(hash);
+			
+			@SuppressWarnings("unchecked")
+			LinkedList<T> aux = (LinkedList<T>) this.table[hash];
+			
+			if (aux != null) {
+				if (aux.contains(element)) {
+					aux.remove(element);
+					this.elements--;
+				}
+			}	
+		}
 	}
 
 	@Override
 	public T search(T element) {
+		T retorno = null;	
 		
+		if (element != null) {
+			int hash = ((HashFunctionClosedAddress<T>) this.getHashFunction()).hash(element);
+			hash = Math.abs(hash);
+			
+			@SuppressWarnings("unchecked")
+			LinkedList<T> aux = (LinkedList<T>) this.table[hash];
+			
+			if (aux != null) {
+				if (aux.contains(element)) {
+					retorno = element;
+				}
+			}
+		}
+		return retorno;
 	}
 
 	@Override
 	public int indexOf(T element) {
 		int hash = ((HashFunctionClosedAddress<T>) this.getHashFunction()).hash(element);
+		hash = Math.abs(hash);
 		int retorno = -1;
+		
+		@SuppressWarnings("unchecked")
 		LinkedList<T> aux = (LinkedList<T>) this.table[hash];
 		
 		if (aux != null) {
