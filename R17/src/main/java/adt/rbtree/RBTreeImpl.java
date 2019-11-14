@@ -83,13 +83,17 @@ public class RBTreeImpl<T extends Comparable<T>> extends BSTImpl<T>
 		if (node.isEmpty()) {
 			return true;
 		} else {
-			if (node.getColour() == Colour.RED) {
-				RBNode<T> RNode = (RBNode<T>) node.getRight();
-				RBNode<T> LNode = (RBNode<T>) node.getLeft();
-				
-				if (RNode == Colour.RED || LColour == Colour.RED) {
-					return (false && verifyChildrenOfRedNodes(node.getRight()));
-				}	
+			RBNode<T> RNode = (RBNode<T>) node.getRight();
+			RBNode<T> LNode = (RBNode<T>) node.getLeft();
+			
+			if (node.getColour() == Colour.RED) {				
+				if (RNode.getColour() == Colour.RED || LNode.getColour() == Colour.RED) {
+					return false;
+				} else {
+					return (true && verifyChildrenOfRedNodes(RNode) && verifyChildrenOfRedNodes(LNode));
+				}
+			} else {
+				return (true && verifyChildrenOfRedNodes(RNode) && verifyChildrenOfRedNodes(LNode));
 			}
 		}
 	}
